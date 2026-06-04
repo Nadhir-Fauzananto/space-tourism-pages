@@ -1,0 +1,927 @@
+/* initial */
+:root {
+  --ff-bellefair: 'Bellefair', sans-serif;
+  --ff-barlow-condensed: 'Barlow Condensed', sans-serif;
+  --clr-offwhite: rgb(239, 239, 239);
+  --clr-offblue: rgb(175, 198, 231);
+  --clr-black: rgb(0, 0, 0);
+}
+
+
+*, 
+*::before, 
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1, h2, h3, h4, h5, h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* utility classes */
+.uppercase {
+  text-transform: uppercase;
+}
+
+.font-title {
+  font-family: 'Bellefair', sans-serif;
+  font-weight: 300;
+  font-size: 6rem;
+}
+
+.font-paragraph {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.15rem;
+}
+
+.font-destination-planet{
+  font-family: var(--ff-bellefair);
+  font-size: 3.5rem;
+}
+
+.font-statistics {
+  font-family: var(--ff-bellefair);
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.font-technology-name {
+  font-family: var(--ff-bellefair);
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.font-destination-info, .font-technology-description {
+  font-family: var(--ff-barlow-condensed);
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.text-offwhite {
+  color: var(--clr-offwhite);
+}
+
+.text-offblue {
+  color: var(--clr-offblue);
+}
+
+.text-black {
+  color: var(--clr-black);
+}
+
+.letter-spacing-large {
+  letter-spacing: 0.15em;
+}
+
+.letter-spacing-medium {
+  letter-spacing: 0.1em;
+}
+
+.line-height-large {
+  line-height: 1.75em;
+}
+
+.line-height-medium {
+  line-height: 1.5em;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.underline-indicators > * {
+  padding-bottom: 0.5rem;
+  border: none;
+  border-bottom: 3px solid rgba(239, 239, 239, 0);
+}
+
+.underline-indicators > *:hover,
+.underline-indicators > *:focus{
+  border-bottom: 3px solid rgba(239, 239, 239, 0.5);
+}
+
+.underline-indicators > *.active,
+.underline-indicators > [aria-current="page"] {
+  border-bottom: 3px solid rgb(239, 239, 239);
+}
+
+.dot-indicators {
+  position: absolute;
+  top: 90%;
+  z-index: 1;
+}
+
+.dot-indicators > *:hover,
+.dot-indicators > *:focus {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.dot-indicators > *.active,
+.dot-indicators > [aria-current="page"] {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.numbered-indicators > *:hover,
+.numbered-indicators > *:focus {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.numbered-indicators > *.active,
+.numbered-indicators > [aria-current="page"] {
+  background-color: rgba(255, 255, 255, 1);
+  color: rgb(0, 0, 0);
+}
+
+/* custom classes */
+/* navbar */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  padding: 1rem 2rem;
+  z-index: 100;
+}
+
+.nav-links-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.15s ease-in-out, visibility 0.3s ease-in-out;
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem 0;
+  padding-top: 10rem;
+  align-items: center;
+  background-color: rgba(11, 13, 51, 0.5);
+  backdrop-filter: blur(20px);
+}
+
+.nav-links a {
+  text-decoration: none;
+}
+
+.nav-links li {
+  width: 15rem;
+  white-space: nowrap;
+}
+
+.page-link {
+  font-size: 2rem;
+  text-align: left;
+}
+
+.page-link span {
+  margin-right: 0.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.hamburger-icon {
+  width: 2rem;
+  height: 2rem;
+  anchor-name: hamburger-icon;
+}
+
+/* homepage */
+.homepage {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-image: url('/home/background-home-mobile.jpg');
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  padding-top: 8rem;
+}
+
+.explore-button {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  position: relative;
+  margin-top: 3rem;
+  padding: 0 1rem;
+  aspect-ratio: 1;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50%;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.explore-button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transition: opacity 0.05s ease-in-out, transform 0.075s ease-in-out;
+  z-index: -1;
+}
+
+.explore-button:hover::after,
+.explore-button:focus::after {
+  opacity: 1;
+  transform: scale(1.4);
+}
+
+/* destination */
+.destination {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-image: url('/destination/background-destination-mobile.jpg');
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  padding-top: 7.5rem;
+}
+
+.destination hr {
+  border-bottom: 1px solid rgb(45, 45, 45);
+  width: 100%;
+}
+
+.destination h2 {
+  font-weight: 300;
+}
+
+.destination h2 span {
+  color: rgba(239, 239, 239, 0.3);
+  margin-right: 0.5rem;
+}
+
+.destination-planet-selection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.planet {
+  margin-top: 2rem;
+  width: 35%;
+}
+
+.destination-planet-name {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.planet-info {
+  margin-bottom: 1.25rem;
+  margin-top: 0.5rem;
+  min-height: 6rem;
+}
+
+.destination-info {
+  margin-top: 1.25rem;
+  margin-bottom: 0.2rem;
+}
+
+/* crew */
+.crew {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-image: url('/crew/background-crew-mobile.jpg');
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  padding-top: 7.5rem;
+}
+
+.crew-image {
+  z-index: 1;
+  height: 300px;
+  width: auto;
+  margin-top: 0.5rem;
+  mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+}
+
+.crew h2 {
+  font-weight: 300;
+  text-align: center;
+}
+
+.crew h2 span {
+  color: rgba(239, 239, 239, 0.3);
+  margin-right: 0.5rem;
+}
+
+.crew-info {
+  width: 90vw;
+}
+
+.crew-title {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: rgba(192, 192, 192, 0.75);
+  margin-top: 2.5rem;
+}
+
+.crew-name {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-top: 0.5rem;
+}
+
+.crew-description {
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin-top: 1.5rem;
+  min-height: 8rem;
+}
+
+.dot-button {
+  background-color: rgba(255, 255, 255, 0.25);
+  padding: 0.25rem;
+  margin-right: 1rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* technology */
+.technology {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-image: url('/technology/background-technology-mobile.jpg');
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  padding-top: 7.5rem;
+  overflow-x: hidden;
+}
+
+.technology h2 {
+  font-weight: 300;
+  text-align: center;
+}
+
+.technology h2 span {
+  color: rgba(239, 239, 239, 0.3);
+  margin-right: 0.5rem;
+}
+
+.technology-image {
+  z-index: 1;
+  width: 100vw;
+  height: 250px;
+  object-fit: cover;
+  object-position: bottom;
+  margin-top: 2.5rem;
+}
+
+.technology-info {
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.technology-info h3 {
+  font-size: 1rem;
+  opacity: 0.5;
+  margin-bottom: 0.75rem;
+}
+
+.numbered-button {
+  background-color: rgba(255, 255, 255, 0);
+  font-family: 'Bellefair', sans-serif;
+  font-size: 1.2rem;
+  color: rgb(255, 255, 255);
+  padding: 0 0.75rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  margin: 1rem 1rem 1.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.technology-info-name {
+  margin-bottom: 1rem;
+}
+
+.technology-info-description {
+  font-size: 0.9rem;
+}
+
+/* tablet */
+@media (min-width: 768px) {
+
+  /* navigation */
+  .hamburger-icon {
+    display: none;
+  }
+
+  .logo-container {
+    flex: 0 0 100px;
+    height: 100%;
+  }
+
+  .logo {
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+  }
+
+  .navbar {
+    align-items: flex-start;
+    position: absolute;
+    padding: 0;
+    height: 10vh;
+  }
+
+  .nav-links-container {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(48, 50, 60, 0.2);
+    backdrop-filter: blur(20px);
+  }
+
+  .nav-links {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+    font-size: 1rem;
+    position: static;
+    top: unset;
+    left: unset;
+    transform: none;
+    padding: 0;
+    margin: 0;
+    gap: 3rem;
+    background-color: transparent;
+  }
+
+  .nav-links li {
+    display: flex;
+    align-items: center;
+    width: auto;
+  }
+  
+  .nav-links li:last-child {
+    margin-right: 2rem;
+  }
+
+  .page-link {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .page-link span {
+    margin-right: 0;
+    font-variant-numeric: normal;
+  }
+
+  .underline-indicators > * {
+    border-bottom: 3px solid rgba(239, 239, 239, 0);
+  }
+
+  /* homepage */
+  .homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 8rem;
+    background-image: url('/home/background-home-tablet.jpg');
+  }
+
+  .homepage > *:not(.explore-button) {
+    width: 75vw;
+  }
+
+  .homepage > *:first-child {
+    font-size: 2rem;
+  }
+
+  .homepage h1 {
+    font-size: 8rem;
+    line-height: 1.3em;
+  }
+
+  .explore-button-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .explore-button {
+    font-size: 1.5rem;
+    padding: 0 2.5rem;
+  }
+
+  /* destination */
+  .destination {
+    background-image: url('/destination/background-destination-tablet.jpg');
+  }
+
+  .destination > * {
+    width: 70vw;
+  }
+
+  .destination h2 {
+    font-weight: 300;
+    position: absolute;
+    min-width: 250px;
+    text-align: left;
+    left: 50px;
+  }
+
+  .planet {
+    margin-top: 3rem;
+    width: 250px;
+  }
+
+  .planet-info {
+    min-height: 4rem;
+  }
+  .destination-planet-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .destination-statistics-container {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+  }
+
+  /* crew */
+  .crew {
+    background-image: url('/crew/background-crew-tablet.jpg');
+  }
+
+  .crew > *:not(.crew-bg):not(.crew-image):not(.dot-indicators) {
+    width: 70vw;
+  }
+
+  .crew h2 {
+    position: absolute;
+    min-width: 250px;
+    text-align: left;
+    left: 50px;
+  }
+
+  .crew-image {
+    height: 350px;
+    width: auto;
+    margin-top: 0;
+    margin-bottom: 3rem;
+  }
+
+  .crew-name {
+    font-size: 2rem;
+  }
+
+  .crew-description {
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+
+  .dot-indicators {
+    top: 92%;
+  }
+  /* technology */
+  .technology > *:not(.technology-image):not(.numbered-button) {
+    width: 70vw;
+  }
+
+  .technology h2 {
+    position: absolute;
+    min-width: 250px;
+    text-align:  left;
+    left: 50px;
+  }
+
+  .technology-image {
+    width: 100vw;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+    margin-top: 4rem;
+  }
+
+  .numbered-button {
+    padding: 0 1.25rem;
+  }
+
+  .technology-info-name {
+    font-size: 2rem;
+  }
+
+  .technology-info {
+    position: relative;
+    width: 70vw;
+  }
+}
+
+
+
+/* desktop */
+@media (min-width: 1440px) {
+  /* navigation */
+  .navbar {
+    margin-top: 2rem;
+  }
+
+  .page-link {
+    position: relative;
+    top: 5px;
+  }
+
+  .logo-container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .logo-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 125%;
+    width: 35vw;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-50%);
+    z-index: -1;
+  }
+
+  .nav-links-container {
+    width: 60%;
+  }
+
+  /* homepage */
+  .homepage {
+    flex-direction: row;
+    background-image: url('/home/background-home-desktop.jpg');
+    padding-top: 4rem;
+  }
+
+  .homepage-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    margin-left: 2rem;
+    flex: 0 0 50vw;
+  }
+
+  .homepage-content-container h1 {
+    font-size: 8rem;
+    line-height: 0.9em;
+  }
+
+  .homepage-content-container p {
+    font-size: 1.25rem;
+  }
+
+  .explore-button {
+    margin: 0;
+    padding: 0 3rem;
+    font-size: 3rem;
+  }
+
+  /* destination */
+  .destination {
+    display: flex;
+    flex-direction: row;
+    background-image: url('/destination/background-destination-desktop.jpg');
+  }
+
+  .planet {
+    width: 350px;
+    margin-top: 0;
+  }
+
+  .destination-planet-container h2 {
+    position: absolute;
+    left: 100px;
+    top: 15%;
+  }
+
+  .destination-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    position: relative;
+    gap: 1.5rem;
+    height: 450px;
+    margin: 0;
+    padding-right: 5rem;
+  }
+
+  .planet-info, .destination-statistics-header {
+    font-size: 1.25rem;
+  }
+
+  .planet-info {
+    margin-bottom: 0;
+    min-height: 9rem;
+  }
+
+  .destination-planet-selection {
+    margin: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .destination-info h3 {
+    font-size: 5rem;
+    margin-top: 4rem;
+  }
+
+  .destination-statistics {
+    font-size: 2rem;
+  }
+
+/* crew */
+
+  .crew {
+      display: flex;
+      flex-direction: row;
+      background-image: url('/crew/background-crew-desktop.jpg');
+    }
+
+  .crew-info h2 {
+    position: absolute;
+    left: 100px;
+    top: 15%;
+  }
+
+  .crew-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    position: relative;
+    left: 80px;
+    gap: 1.5rem;
+    height: 450px;
+    margin: 0;
+    padding-right: 125px;
+  }
+
+  .crew-title {
+    font-size: 1.5rem;
+    margin-top: 0;
+  }
+
+  .crew-name {
+    font-size: 2.5rem;
+    margin-top: 0;
+    line-height: 1em;
+    margin-bottom: 1.5rem;
+  }
+
+  .crew-description {
+    font-size: 1.25rem;
+    margin-top: 0;
+    min-height: 10rem;
+  }
+
+  .crew-image {
+    height: 500px;
+    width: auto;
+    margin-right: 80px;
+  }
+
+  .dot-button {
+    padding: 0.5rem;
+    margin-right: 2rem;
+  }
+
+  .dot-indicators {
+    top: 80%;
+    left: 105px;
+  }
+
+
+  /* technology */
+  .technology {
+      display: flex;
+      flex-direction: row-reverse;
+      background-image: url('/technology/background-technology-desktop.jpg');
+      padding-right: 0;
+    }
+
+  .technology-image {
+    width: 450px;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    margin-top: 0;
+  }
+
+  .technology h2 {
+      position: absolute;
+      left: 100px;
+      top: 15%;
+    }
+
+  .technology-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position: relative;
+    left: 80px;
+    padding: 160px 160px 0 0;
+    gap: 2rem;
+  }
+
+  .technology-info-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .numbered-button {
+    margin: 0 1rem 1rem 0;
+    padding: 0 1.5rem;
+  }
+
+  .technology-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    position: relative;
+    gap: 1.5rem;
+    height: 450px;
+    margin: 0;
+  }
+
+  .technology-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .technology-info-name {
+    font-size: 3rem;
+    line-height: 0.5em;
+    margin-top: 0;
+  }
+
+  .technology-info-description {
+    font-size: 1.25rem;
+    min-height: 12rem;
+  }
+}
