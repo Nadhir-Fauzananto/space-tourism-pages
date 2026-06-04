@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-const logo = '/shared/logo.svg'
-const hamburger = '/shared/icon-hamburger.svg'
+const logo = import.meta.env.BASE_URL + 'shared/logo.svg'
+const hamburger = import.meta.env.BASE_URL + 'shared/icon-hamburger.svg'
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false)

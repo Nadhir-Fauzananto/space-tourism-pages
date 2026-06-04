@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, Routes, BrowserRouter} from 'react-router-dom'
+import {Route, Routes, HashRouter} from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Homepage from './components/Homepage.jsx'
 import Destination from './components/Destination.jsx'
@@ -9,7 +9,7 @@ import Technology from './components/Technology.jsx'
 export default function App() {
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Homepage />} />
@@ -17,6 +17,6 @@ export default function App() {
         <Route path="/crew" element={<Crew />} />
         <Route path="/technology" element={<Technology />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }

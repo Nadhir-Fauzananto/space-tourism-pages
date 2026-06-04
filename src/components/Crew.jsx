@@ -2,10 +2,10 @@ import React from 'react'
 import crewData from './data.json'
 
 const crewImages = {
-    'Douglas Hurley': '/crew/image-douglas-hurley.png',
-    'Mark Shuttleworth': '/crew/image-mark-shuttleworth.png',
-    'Victor Glover': '/crew/image-victor-glover.png',
-    'Anousheh Ansari': '/crew/image-anousheh-ansari.png'
+    'Douglas Hurley': import.meta.env.BASE_URL + 'crew/image-douglas-hurley.png',
+    'Mark Shuttleworth': import.meta.env.BASE_URL + 'crew/image-mark-shuttleworth.png',
+    'Victor Glover': import.meta.env.BASE_URL + 'crew/image-victor-glover.png',
+    'Anousheh Ansari': import.meta.env.BASE_URL + 'crew/image-anousheh-ansari.png'
 }
 
 export default function Crew() {

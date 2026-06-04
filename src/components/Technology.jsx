@@ -2,9 +2,9 @@ import React from 'react';
 import technologyData from './data.json'
 
 const technologyImages = {
-    'Launch vehicle': '/technology/image-launch-vehicle-portrait.jpg',
-    'Spaceport': '/technology/image-spaceport-portrait.jpg',
-    'Space capsule': '/technology/image-space-capsule-portrait.jpg'
+    'Launch vehicle': import.meta.env.BASE_URL + 'technology/image-launch-vehicle-portrait.jpg',
+    'Spaceport': import.meta.env.BASE_URL + 'technology/image-spaceport-portrait.jpg',
+    'Space capsule': import.meta.env.BASE_URL + 'technology/image-space-capsule-portrait.jpg'
 }
 
 export default function Technology() {

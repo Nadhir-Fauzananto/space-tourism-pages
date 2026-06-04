@@ -2,10 +2,10 @@ import React from 'react'
 import destinationData from './data.json'
 
 const planetImages = {
-    'Moon': '/destination/image-moon.png',
-    'Mars': '/destination/image-mars.png',
-    'Europa': '/destination/image-europa.png',
-    'Titan': '/destination/image-titan.png'
+    'Moon': import.meta.env.BASE_URL + 'destination/image-moon.png',
+    'Mars': import.meta.env.BASE_URL + 'destination/image-mars.png',
+    'Europa': import.meta.env.BASE_URL + 'destination/image-europa.png',
+    'Titan': import.meta.env.BASE_URL + 'destination/image-titan.png'
 }
 
 export default function Destination() {
