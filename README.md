@@ -1,2 +1,2 @@
 # space-tourism-pages
-Mulit-page website made using React
+Multi-page website made using React
