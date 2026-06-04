@@ -26,7 +26,7 @@ export default function Crew() {
                         key={crew.name}
                         className={`dot-button ${selectedCrew.name === crew.name ? 'active' : ''}`}
                         onClick={() => setSelectedCrew(crew)}
-                    ></button>
+                    ><span className="sr-only">{crew.name}</span></button>
                 ))}
             </div>
             <img className="crew-image" src={crewImages[selectedCrew.name]} alt={selectedCrew.name} />

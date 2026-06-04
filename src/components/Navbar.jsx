@@ -13,7 +13,7 @@ export default function Navbar() {
                 <img src={logo} alt="logo" className="logo" />
             </div>
             <div className="nav-links-container">
-                <img src={hamburger} className="hamburger-icon visible" alt="menu" onClick={() => setMenuOpen(prev => !prev)} />
+                <button style={{ backgroundImage: `url(${hamburger})` }} className="hamburger-icon visible" alt="menu" onClick={() => setMenuOpen(prev => !prev)}><span className="sr-only">Menu</span></button>
                 <ul className={`nav-links underline-indicators ${menuOpen ? 'visible' : 'hidden'}`}>
                     <li className={pathname === '/' ? 'active' : ''}><NavLink to="/" end onClick={() => setMenuOpen(false)} className="page-link font-paragraph uppercase text-offwhite letter-spacing-large"><span>00</span> Home</NavLink></li>
                     <li className={pathname === '/destination' ? 'active' : ''}><NavLink to="/destination" onClick={() => setMenuOpen(false)} className="page-link font-paragraph uppercase text-offwhite letter-spacing-large"><span>01</span> Destination</NavLink></li>
